@@ -9,5 +9,14 @@
         android:id="@+id/splashFragment"
         android:name="com.example.lazaapp.ui.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" />
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.lazaapp.ui.splash.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" />
 </navigation>

@@ -6,8 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.lazaapp.R
+import com.example.lazaapp.base.BaseFragment
+import com.example.lazaapp.databinding.FragmentWelcomeBinding
 
 
-class WelcomeFragment : Fragment() {
+class WelcomeFragment : BaseFragment<FragmentWelcomeBinding>(FragmentWelcomeBinding::inflate) {
+
+
 
 }
