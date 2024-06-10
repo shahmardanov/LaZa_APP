@@ -1,4 +1,13 @@
 package com.example.lazaapp.source.remote
 
-class Repository {
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.tasks.await
+import javax.inject.Inject
+
+class Repository @Inject constructor(
+    private val firebaseAuth: FirebaseAuth
+) {
+
+    suspend fun loginUser(userEmail: String, userPassword: String) =
+        firebaseAuth.signInWithEmailAndPassword(userEmail, userPassword).await()
 }
