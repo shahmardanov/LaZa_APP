@@ -70,7 +70,6 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-android-compiler:2.47")
-    implementation("com.github.Spikeysanju:MotionToast:1.4")
     implementation("com.github.bumptech.glide:glide:4.16.0")
 
     implementation("androidx.room:room-runtime:$room_version")
