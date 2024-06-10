@@ -25,7 +25,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding
     private fun forwardFragment() {
         lifecycleScope.launch {
             delay(2000)
-            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToWelcomeFragment())
+            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
         }
     }
 }
