@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.lazaapp.R
+import com.example.lazaapp.base.BaseFragment
+import com.example.lazaapp.databinding.FragmentSplashBinding
 
 
-class SplashFragment : Fragment() {
+class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding::inflate) {
 
 
 
