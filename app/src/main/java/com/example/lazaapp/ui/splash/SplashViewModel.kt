@@ -1,4 +1,6 @@
 package com.example.lazaapp.ui.splash
 
-class SplashViewModel {
+import androidx.lifecycle.ViewModel
+
+class SplashViewModel : ViewModel(){
 }
