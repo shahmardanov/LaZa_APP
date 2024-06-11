@@ -1,5 +1,6 @@
 package com.example.lazaapp.ui.auth
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
+import androidx.navigation.fragment.findNavController
 import com.example.lazaapp.R
 import com.example.lazaapp.base.BaseFragment
 import com.example.lazaapp.databinding.FragmentLoginBinding
@@ -30,9 +32,15 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     private fun observeData() {
         viewModel.isSuccess.observe(viewLifecycleOwner) {
-            if (it) Toast.makeText(context, "Login Success", Toast.LENGTH_LONG).show() else
+            if (it) {
+                if (binding.switchMaterial.isChecked) setUserAuth()
+                Toast.makeText(context, "Login Success", Toast.LENGTH_LONG).show()
+                findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment())
+            } else {
                 Toast.makeText(context, "Login Failed", Toast.LENGTH_LONG).show()
+            }
         }
+
 
         viewModel.loading.observe(viewLifecycleOwner) {
             if (it) binding.animationView.visible() else binding.animationView.gone()
@@ -48,5 +56,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         } else {
             Toast.makeText(context, "Setirler bosh ola bilmez", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun setUserAuth() {
+        val sp = requireActivity().getSharedPreferences("product_local", Context.MODE_PRIVATE)
+        sp.edit().putBoolean("isAuth", true).apply()
     }
 }

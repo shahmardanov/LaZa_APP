@@ -1,5 +1,6 @@
 package com.example.lazaapp.ui.splash
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,8 +25,19 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding
 
     private fun forwardFragment() {
         lifecycleScope.launch {
+            val isAuth = getAuth()
             delay(2000)
-            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+            if (isAuth) {
+                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeFragment())
+            } else {
+                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+            }
         }
     }
-}
+
+        private fun getAuth(): Boolean {
+            val sp = requireActivity().getSharedPreferences("product_local", Context.MODE_PRIVATE)
+
+            return sp.getBoolean("isAuth", false)
+        }
+    }
