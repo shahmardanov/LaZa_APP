@@ -25,6 +25,13 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         }
     }
 
+    private fun observeData() {
+        viewModel.isSuccess.observe(viewLifecycleOwner) {
+            if (it) Toast.makeText(context, "Login Success", Toast.LENGTH_LONG).show() else
+                Toast.makeText(context, "Login Failed", Toast.LENGTH_LONG).show()
+        }
+    }
+
     private fun login() {
         val userEmail = binding.emailLogin.text.toString().trim()
         val userPassword = binding.passwordLogin.toString().trim()
