@@ -1,6 +1,7 @@
 package com.example.lazaapp.ui.auth
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.lazaapp.source.remote.Repository
@@ -11,13 +12,21 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
+    var loading = MutableLiveData<Boolean>()
+    var isSuccess = MutableLiveData<Boolean>()
+
     fun loginUser(userEmail: String, userPassword: String) {
+        loading.value = true
         viewModelScope.launch {
             try {
                 val response = repository.loginUser(userEmail, userPassword)
-                Log.e("responseData", response.user?.email.toString())
+                if (!response.user?.email.isNullOrEmpty()) {
+                    loading.value = false
+                    isSuccess.value = true
+                }
             } catch (e: Exception) {
-                Log.e("responseError", e.localizedMessage.toString())
+                loading.value = false
+                isSuccess.value = false
             }
         }
     }
