@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModel
 import com.example.lazaapp.R
 import com.example.lazaapp.base.BaseFragment
 import com.example.lazaapp.databinding.FragmentLoginBinding
+import com.example.lazaapp.utils.gone
+import com.example.lazaapp.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,6 +22,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeData()
         binding.button.setOnClickListener {
             login()
         }
@@ -29,6 +32,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         viewModel.isSuccess.observe(viewLifecycleOwner) {
             if (it) Toast.makeText(context, "Login Success", Toast.LENGTH_LONG).show() else
                 Toast.makeText(context, "Login Failed", Toast.LENGTH_LONG).show()
+        }
+
+        viewModel.loading.observe(viewLifecycleOwner) {
+            if (it) binding.animationView.visible() else binding.animationView.gone()
         }
     }
 
