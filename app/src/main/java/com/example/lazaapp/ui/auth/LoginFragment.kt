@@ -28,6 +28,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         binding.button.setOnClickListener {
             login()
         }
+
+        binding.button2.setOnClickListener {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
+        }
     }
 
     private fun observeData() {
@@ -49,7 +53,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     private fun login() {
         val userEmail = binding.emailLogin.text.toString().trim()
-        val userPassword = binding.passwordLogin.toString().trim()
+        val userPassword = binding.passwordLogin2.toString().trim()
 
         if (userEmail.isNotEmpty() && userPassword.isNotEmpty()) {
             viewModel.loginUser(userEmail, userPassword)
@@ -62,4 +66,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         val sp = requireActivity().getSharedPreferences("product_local", Context.MODE_PRIVATE)
         sp.edit().putBoolean("isAuth", true).apply()
     }
+
+
 }

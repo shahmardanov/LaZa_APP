@@ -10,4 +10,7 @@ class Repository @Inject constructor(
 
     suspend fun loginUser(userEmail: String, userPassword: String) =
         firebaseAuth.signInWithEmailAndPassword(userEmail, userPassword).await()
+
+    suspend fun registerUser(userEmail: String, userPassword: String) =
+        firebaseAuth.createUserWithEmailAndPassword(userEmail, userPassword).await()
 }

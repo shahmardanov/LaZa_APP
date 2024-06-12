@@ -14,6 +14,7 @@ class LoginViewModel @Inject constructor(private val repository: Repository) : V
 
     var loading = MutableLiveData<Boolean>()
     var isSuccess = MutableLiveData<Boolean>()
+    var errorMessage = MutableLiveData<String>()
 
     fun loginUser(userEmail: String, userPassword: String) {
         loading.value = true
@@ -25,6 +26,23 @@ class LoginViewModel @Inject constructor(private val repository: Repository) : V
                     isSuccess.value = true
                 }
             } catch (e: Exception) {
+                loading.value = false
+                isSuccess.value = false
+            }
+        }
+    }
+
+    fun registerUser(userEmail: String, userPassword: String) {
+        loading.value = true
+        viewModelScope.launch {
+            try {
+                val response = repository.registerUser(userEmail, userPassword)
+                if (!response.user?.email.isNullOrEmpty()) {
+                    loading.value = false
+                    isSuccess.value = true
+                }
+            } catch (e: Exception) {
+                errorMessage.value = e.localizedMessage.toString()
                 loading.value = false
                 isSuccess.value = false
             }

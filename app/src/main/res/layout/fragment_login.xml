@@ -51,7 +51,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordLogin"
+        android:id="@+id/passwordLogin2"
         style="?attr/textInputFilledStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -97,8 +97,8 @@
         android:layout_marginTop="20dp"
         android:text="Remember me"
         android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="@+id/passwordLogin"
-        app:layout_constraintTop_toBottomOf="@+id/passwordLogin" />
+        app:layout_constraintStart_toStartOf="@+id/passwordLogin2"
+        app:layout_constraintTop_toBottomOf="@+id/passwordLogin2" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/switchMaterial"
@@ -106,7 +106,7 @@
         android:layout_height="51dp"
         android:checked="true"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="@+id/passwordLogin"
+        app:layout_constraintEnd_toEndOf="@+id/passwordLogin2"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
 
     <TextView
@@ -134,5 +134,17 @@
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/animation" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="20dp"
+        android:text="Sign Up ?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
