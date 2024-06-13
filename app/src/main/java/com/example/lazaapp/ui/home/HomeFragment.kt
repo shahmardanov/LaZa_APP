@@ -27,6 +27,18 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         viewModel.brandData.observe(viewLifecycleOwner) {
             brandAdapter.updateList(it)
         }
+
+        viewModel.data.observe(viewLifecycleOwner) {
+
+        }
+
+        viewModel.loading.observe(viewLifecycleOwner) {
+
+        }
+
+        viewModel.error.observe(viewLifecycleOwner) {
+
+        }
     }
 
 

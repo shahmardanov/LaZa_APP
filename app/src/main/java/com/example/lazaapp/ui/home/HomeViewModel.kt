@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.lazaapp.R
 import com.example.lazaapp.model.BrandModel
+import com.example.lazaapp.model.ProductResponse
 import com.example.lazaapp.source.remote.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -14,6 +15,9 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
     val brandData = MutableLiveData<List<BrandModel>>()
+    val data = MutableLiveData<List<ProductResponse>>()
+    val loading = MutableLiveData<Boolean>()
+    val error = MutableLiveData<String>()
 
     init {
         getInitData()
@@ -37,13 +41,21 @@ class HomeViewModel @Inject constructor(private val repository: Repository) : Vi
     }
 
     private fun getProducts() {
+        loading.value = true
         viewModelScope.launch {
-            val response = repository.getAllProducts()
-            if (response.isSuccessful) {
-                response.body()?.let {
-
+            try {
+                val response = repository.getAllProducts()
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        data.value = it
+                    }
+                } else {
+                    error.value = response.errorBody().toString()
                 }
+            }catch (e:Exception){
+                error.value=e.localizedMessage.toString()
             }
+
         }
     }
 }
