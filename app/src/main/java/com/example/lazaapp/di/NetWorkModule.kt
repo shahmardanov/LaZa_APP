@@ -5,6 +5,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import retrofit2.Retrofit
 import javax.inject.Singleton
 
 @Module
@@ -17,5 +18,7 @@ object NetWorkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit()
+    fun provideRetrofit(): Retrofit {
+        return Retrofit.Builder().baseUrl()
+    }
 }
