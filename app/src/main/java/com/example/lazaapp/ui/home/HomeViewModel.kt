@@ -4,9 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.lazaapp.R
 import com.example.lazaapp.model.BrandModel
+import com.example.lazaapp.source.remote.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
     val brandData = MutableLiveData<List<BrandModel>>()
 
@@ -16,7 +18,8 @@ class HomeViewModel : ViewModel() {
             BrandModel(R.drawable.nike, "Nike"),
             BrandModel(R.drawable.fila, "Fila"),
             BrandModel(R.drawable.new_balance, "New Balance"),
-            BrandModel(R.drawable.reebok, "Reebok"))
+            BrandModel(R.drawable.reebok, "Reebok")
+        )
 
         brandData.value = brandList
     }

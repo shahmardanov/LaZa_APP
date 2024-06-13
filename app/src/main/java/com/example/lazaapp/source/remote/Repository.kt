@@ -5,7 +5,8 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class Repository @Inject constructor(
-    private val firebaseAuth: FirebaseAuth
+    private val firebaseAuth: FirebaseAuth,
+    private val productService: ProductService
 ) {
 
     suspend fun loginUser(userEmail: String, userPassword: String) =
@@ -13,4 +14,6 @@ class Repository @Inject constructor(
 
     suspend fun registerUser(userEmail: String, userPassword: String) =
         firebaseAuth.createUserWithEmailAndPassword(userEmail, userPassword).await()
+
+    suspend fun getAllProducts() = productService.getAllProducts()
 }
