@@ -1,5 +1,6 @@
 package com.example.lazaapp.di
 
+import com.example.lazaapp.source.remote.ProductService
 import com.example.lazaapp.utils.BaseUrl
 import com.example.lazaapp.utils.BaseUrl.BASE_URL
 import com.google.firebase.auth.FirebaseAuth
@@ -28,7 +29,7 @@ object NetWorkModule {
 
     @Singleton
     @Provides
-    fun provideService(){
-
+    fun provideService(retrofit: Retrofit): ProductService {
+        return retrofit.create(ProductService::class.java)
     }
 }
