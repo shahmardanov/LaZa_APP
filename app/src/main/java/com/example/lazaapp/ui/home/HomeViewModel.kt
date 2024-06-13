@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.lazaapp.R
 import com.example.lazaapp.model.BrandModel
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 class HomeViewModel : ViewModel() {
 
@@ -11,6 +12,9 @@ class HomeViewModel : ViewModel() {
 
     fun createBrand() {
         val brandList = listOf(
+            BrandModel(R.drawable.adidas, "Adidas"),
+            BrandModel(R.drawable.nike, "Nike"),
+            BrandModel(R.drawable.fila, "Fila"),
             BrandModel(R.drawable.adidas, "Adidas"),
             BrandModel(R.drawable.nike, "Nike"),
             BrandModel(R.drawable.fila, "Fila")
