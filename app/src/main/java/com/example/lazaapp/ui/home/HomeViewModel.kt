@@ -15,10 +15,8 @@ class HomeViewModel : ViewModel() {
             BrandModel(R.drawable.adidas, "Adidas"),
             BrandModel(R.drawable.nike, "Nike"),
             BrandModel(R.drawable.fila, "Fila"),
-            BrandModel(R.drawable.adidas, "Adidas"),
-            BrandModel(R.drawable.nike, "Nike"),
-            BrandModel(R.drawable.fila, "Fila")
-        )
+            BrandModel(R.drawable.new_balance, "New Balance"),
+            BrandModel(R.drawable.reebok, "Reebok"))
 
         brandData.value = brandList
     }

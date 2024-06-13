@@ -14,4 +14,8 @@ object NetWorkModule {
     @Singleton
     @Provides
     fun provideFirebaseAuth() = FirebaseAuth.getInstance()
+
+    @Singleton
+    @Provides
+    fun provideRetrofit()
 }
