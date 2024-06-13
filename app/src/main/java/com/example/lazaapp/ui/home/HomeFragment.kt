@@ -9,8 +9,9 @@ import androidx.fragment.app.viewModels
 import com.example.lazaapp.R
 import com.example.lazaapp.base.BaseFragment
 import com.example.lazaapp.databinding.FragmentHomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
     private val viewModel by viewModels<HomeViewModel>()
