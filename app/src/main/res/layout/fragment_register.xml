@@ -63,6 +63,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pass1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -145,16 +146,6 @@
         app:layout_constraintTop_toBottomOf="@+id/registerRepassword" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/registerRepassword2"
-        style="?attr/textInputFilledStyle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:endIconMode="password_toggle"
-        tools:layout_editor_absoluteX="335dp">
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/registerRepassword"
         style="?attr/textInputFilledStyle"
         android:layout_width="0dp"
@@ -168,6 +159,7 @@
         app:layout_constraintTop_toBottomOf="@+id/passwordLogin1">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pass2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="RePassword"

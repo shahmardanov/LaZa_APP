@@ -25,7 +25,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeData()
-        binding.button.setOnClickListener {
+        binding.buttonLogin.setOnClickListener {
             login()
         }
 
@@ -53,7 +53,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     private fun login() {
         val userEmail = binding.emailLogin.text.toString().trim()
-        val userPassword = binding.passwordLogin2.toString().trim()
+        val userPassword = binding.password2.text.toString().trim()
 
         if (userEmail.isNotEmpty() && userPassword.isNotEmpty()) {
             viewModel.loginUser(userEmail, userPassword)

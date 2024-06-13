@@ -31,13 +31,14 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
     private fun registerUser() {
         var email = binding.emailLogin.text.toString().trim()
-        var password = binding.passwordLogin1.toString().trim()
-        var repassword = binding.registerRepassword.toString().trim()
+        var password = binding.pass1.text.toString().trim()
+        var repassword = binding.pass2.text.toString().trim()
 
         if (email.isNotEmpty() && password.isNotEmpty() && repassword.isNotEmpty()) {
             if (password == repassword) {
                 if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     viewModel.registerUser(email,password)
+                    findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
                 } else {
                     Toast.makeText(context, "The email format is not correct", Toast.LENGTH_LONG).show()
                 }

@@ -26,7 +26,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding
     private fun forwardFragment() {
         lifecycleScope.launch {
             val isAuth = getAuth()
-            delay(2000)
+            delay(1500)
             if (isAuth) {
                 findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeFragment())
             } else {
