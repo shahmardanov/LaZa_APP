@@ -7,7 +7,5 @@ import retrofit2.http.GET
 interface ProductService {
 
     @GET("products")
-    suspend fun getAllProducts():Response<List<ProductResponse>>{
-
-    }
+    suspend fun getAllProducts(): Response<List<ProductResponse>>
 }
