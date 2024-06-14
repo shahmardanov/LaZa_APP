@@ -141,6 +141,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView8" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProducts"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="2"

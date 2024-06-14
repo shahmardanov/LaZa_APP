@@ -1,6 +1,7 @@
 package com.example.lazaapp.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,14 +20,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     private val brandAdapter = HomeAdapter()
     private val newArrivalAdapter = NewArrivalAdapter()
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeData()
         viewModel.createBrand()
         binding.rvBrands.adapter = brandAdapter
-        binding.rvBrands.adapter = newArrivalAdapter
+        binding.rvProducts.adapter = newArrivalAdapter
 
     }
 
@@ -36,7 +35,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
 
         viewModel.data.observe(viewLifecycleOwner) {
-
+            Log.e("salam2",it.toString())
+            newArrivalAdapter.updateList(it)
         }
 
         viewModel.loading.observe(viewLifecycleOwner) {

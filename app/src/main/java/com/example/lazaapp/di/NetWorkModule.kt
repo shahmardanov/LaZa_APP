@@ -1,6 +1,7 @@
 package com.example.lazaapp.di
 
 import com.example.lazaapp.source.remote.ProductService
+import com.example.lazaapp.source.remote.Repository
 import com.example.lazaapp.utils.BaseUrl
 import com.example.lazaapp.utils.BaseUrl.BASE_URL
 import com.google.firebase.auth.FirebaseAuth
@@ -18,10 +19,6 @@ object NetWorkModule {
 
     @Singleton
     @Provides
-    fun provideFirebaseAuth() = FirebaseAuth.getInstance()
-
-    @Singleton
-    @Provides
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder().baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create()).build()
@@ -31,5 +28,17 @@ object NetWorkModule {
     @Provides
     fun provideService(retrofit: Retrofit): ProductService {
         return retrofit.create(ProductService::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideFirebaseauth() :FirebaseAuth{
+        return FirebaseAuth.getInstance()
+    }
+
+    @Singleton
+    @Provides
+    fun provideRepository(firebaseAuth: FirebaseAuth, productService: ProductService):Repository {
+        return Repository(firebaseAuth,productService)
     }
 }

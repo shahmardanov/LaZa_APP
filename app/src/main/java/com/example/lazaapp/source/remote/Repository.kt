@@ -6,7 +6,7 @@ import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
-@HiltViewModel
+
  class Repository @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val productService: ProductService
@@ -19,6 +19,4 @@ import javax.inject.Inject
         firebaseAuth.createUserWithEmailAndPassword(userEmail, userPassword).await()
 
     suspend fun getAllProducts() = productService.getAllProducts()
-
-     suspend fun getNewArrivalProduct(): NetworkResponse<List<ProductResponse>>
 }

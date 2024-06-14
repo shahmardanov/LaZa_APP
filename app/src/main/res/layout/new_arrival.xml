@@ -12,21 +12,24 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clItemNewArrival"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:layout_marginHorizontal="24dp">
 
         <ImageView
             android:id="@+id/imageView6"
-            android:layout_width="407dp"
-            android:layout_height="411dp"
+            android:layout_width="0dp"
+            android:layout_height="180dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:setImageFromUrl="@{item.image}"
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
             android:id="@+id/imageView7"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +42,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:textSize="22sp"
+            android:text="@{item.title}"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView6" />
@@ -50,6 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
+            android:text="@{item.price.toString()}"
             android:textSize="22sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"

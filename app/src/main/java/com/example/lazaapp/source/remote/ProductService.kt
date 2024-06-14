@@ -8,4 +8,6 @@ interface ProductService {
 
     @GET("products")
     suspend fun getAllProducts(): Response<List<ProductResponse>>
+
+
 }
