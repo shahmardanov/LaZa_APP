@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import com.example.lazaapp.R
 import com.example.lazaapp.base.BaseFragment
 import com.example.lazaapp.databinding.FragmentHomeBinding
+import com.example.lazaapp.newarrival.NewArrivalAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -16,12 +17,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     private val viewModel by viewModels<HomeViewModel>()
     private val brandAdapter = HomeAdapter()
+    private val newArrivalAdapter = NewArrivalAdapter()
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeData()
         viewModel.createBrand()
         binding.rvBrands.adapter = brandAdapter
+        binding.rvBrands.adapter = newArrivalAdapter
+
     }
 
     private fun observeData() {
@@ -41,6 +47,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         }
     }
-
 
 }
