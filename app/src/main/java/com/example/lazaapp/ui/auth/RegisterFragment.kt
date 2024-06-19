@@ -24,6 +24,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeData()
         binding.registerLazzaButton.setOnClickListener {
             registerUser()
         }
@@ -38,7 +39,6 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
             if (password == repassword) {
                 if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     viewModel.registerUser(email,password)
-                    findNavController().navigate(RegisterFragmentDirections.actionRegisterFragmentToLoginFragment())
                 } else {
                     Toast.makeText(context, "The email format is not correct", Toast.LENGTH_LONG).show()
                 }
