@@ -35,7 +35,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         }
 
         viewModel.data.observe(viewLifecycleOwner) {
-            Log.e("salam2",it.toString())
             newArrivalAdapter.updateList(it)
         }
 
